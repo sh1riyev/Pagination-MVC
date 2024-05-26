@@ -1,17 +1,34 @@
 ﻿<Properties StartupConfiguration="{78BBCAD7-E05D-4F73-915A-E1BEEBFD790E}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="FiorelloFront/Controllers/ProductController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FiorelloFront/wwwroot/js/basket.js">
     <Files>
-      <File FileName="FiorelloFront/Controllers/ProductController.cs" Line="26" Column="12" />
-      <File FileName="FiorelloFront/Services/ProductService.cs" Line="47" Column="76" />
+      <File FileName="FiorelloFront/Views/Cart/Index.cshtml" Line="1" Column="15" />
+      <File FileName="FiorelloFront/wwwroot/js/basket.js" Line="30" Column="14" />
+      <File FileName="FiorelloFront/ViewModels/Baskets/BasketDetailVM.cs" Line="6" Column="25" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="FiorelloFront">
-            <Node name="FiorelloFront" selected="True">
+            <Node name="FiorelloFront">
               <Node name="Controllers" expanded="True" />
-              <Node name="Helpers" expanded="True">
-                <Node name="Extensions" expanded="True" />
+              <Node name="ViewModels" expanded="True">
+                <Node name="Baskets" expanded="True" />
+                <Node name="Products" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Blog" expanded="True" />
+                <Node name="Cart" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="admin" expanded="True">
+                  <Node name="assets" expanded="True">
+                    <Node name="css" expanded="True" />
+                    <Node name="js" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="js" expanded="True">
+                  <Node name="basket.js" selected="True" />
+                </Node>
               </Node>
             </Node>
           </Node>

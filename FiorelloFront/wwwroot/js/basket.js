@@ -30,4 +30,27 @@
             }
         })
     })
+
 })
+
+
+var increaseBtns = document.querySelectorAll("#cart-page .plus-cart");
+
+increaseBtns.forEach(function (increaseBtn) {
+    increaseBtn.addEventListener("click", function () {
+        let id = parseInt(this.getAttribute("data-id"));
+
+        $.ajax({
+            type: "POST",
+            url: `home/AddProductToBasket?id=${id}`,
+            success: function (response) {
+                $(".rounded-circle").text(response.count)
+                $(".rounded-circle").next().text(`CART($${response.totalPrice})`)
+                $(".cart-total").text(`$${response.totalPrice}`);
+                $(".total-basketCount").text(`You have ${response.basketCount} items in your cart`);
+                $(".item-count").text(item.count)
+            }
+        })
+
+    });
+});
