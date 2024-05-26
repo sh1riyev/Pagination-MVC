@@ -1,5 +1,6 @@
 ﻿using System;
 using FiorelloFront.Models;
+using FiorelloFront.ViewModels;
 using FiorelloFront.ViewModels.Categories;
 
 namespace FiorelloFront.Services.Interface
@@ -14,6 +15,9 @@ namespace FiorelloFront.Services.Interface
 		public Task DeleteAsync(Category category);
 		Task<Category> Detail(int? id);
 		Task<IEnumerable<CategoryArchiveVM>> GetAllArchive();
+        Task<IEnumerable<Category>> GetPaginateData(int take, int page);
+        IEnumerable<CategoryProductVM> GetMapData(IEnumerable<Category> products);
+        Task<int> GetCountAsync();
     }
 }
 

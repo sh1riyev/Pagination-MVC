@@ -39,6 +39,8 @@
     <Folder Include="ViewModels\Products\" />
     <Folder Include="Views\Cart\" />
     <Folder Include="Areas\Admin\Views\Product\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Helpers\Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.30" />
@@ -80,5 +82,7 @@
     <None Remove="ViewModels\Products\" />
     <None Remove="Views\Cart\" />
     <None Remove="Areas\Admin\Views\Product\" />
+    <None Remove="Helpers\" />
+    <None Remove="Helpers\Extensions\" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProductVM>
+﻿@model Paginate<ProductVM>
 
 <div class="card">
     <div class="card-header text-center">
@@ -20,7 +20,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.Datas)
                     {
                         <tr class="category-data">
                             <td><img src="~/img/@item.MainImage" style="width:100px;height:100px" /></td>
@@ -41,16 +41,18 @@
             <div class="pagination d-flex justify-content-center mt-3">
                 <nav aria-label="...">
                     <ul class="pagination">
-                        <li class="page-item disabled">
-                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        <li class="page-item @(Model.HasPrevious?"" : "disabled")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage-1)" tabindex="-1">Previous</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item active">
-                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
+                        @for (int i = 1; i <= Model.TotalPage; i++)
+                        {
+                            <li class="page-item @(Model.CurrentPage==i ? "disabled" : "")">
+                                <a class="page-link @(Model.CurrentPage==i ? "paginate-active" : "") " asp-action="Index" asp-route-page="@i" >@i <span class="sr-only">(current)</span></a>
+                            </li>
+                        }
+
+                        <li class="page-item @(Model.HasNext ? "" : "disabled")">
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.CurrentPage+1)" >Next</a>
                         </li>
                     </ul>
                 </nav>

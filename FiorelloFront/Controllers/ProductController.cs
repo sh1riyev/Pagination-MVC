@@ -1,5 +1,7 @@
 ﻿using System;
+using FiorelloFront.Helpers;
 using FiorelloFront.Services.Interface;
+using FiorelloFront.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FiorelloFront.Controllers
@@ -15,13 +17,25 @@ namespace FiorelloFront.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult >Index()
+		public async Task<IActionResult >Index(int page=1)
 		{
-			var products = await _productService.GetAllWithAsync();
+			var products = await _productService.GetPaginateData(page, 4);
 
 			var mappedDatas = _productService.GetMapData(products);
 
-			return View(mappedDatas);
+            int totalPage = await GetPageCount(4);
+
+			Paginate<ProductVM> paginateDatas = new(mappedDatas, totalPage, page);
+
+			return View(paginateDatas);
+		}
+
+
+		private async Task<int> GetPageCount(int take)
+		{
+			int productCount = await _productService.GetCountAsync();
+
+			return (int)Math.Ceiling((decimal)productCount / take);
 		}
 	}
 }

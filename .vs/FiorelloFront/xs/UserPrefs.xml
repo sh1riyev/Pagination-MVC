@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{78BBCAD7-E05D-4F73-915A-E1BEEBFD790E}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="FiorelloFront/Controllers/ProductController.cs">
+    <Files>
+      <File FileName="FiorelloFront/Controllers/ProductController.cs" Line="26" Column="12" />
+      <File FileName="FiorelloFront/Services/ProductService.cs" Line="47" Column="76" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="FiorelloFront">
+            <Node name="FiorelloFront" selected="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Helpers" expanded="True">
+                <Node name="Extensions" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.FiorelloFront PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

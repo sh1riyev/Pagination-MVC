@@ -9,7 +9,9 @@ namespace FiorelloFront.Services.Interface
 		Task<IEnumerable<Product>> GetAllAsync();
 		Task<Product> GetByIdAsync(int id);
 		Task<IEnumerable<Product>> GetAllWithAsync();
+        Task<IEnumerable<Product>> GetPaginateData(int take, int page);
         IEnumerable<ProductVM> GetMapData(IEnumerable<Product> products);
+		Task<int> GetCountAsync();
 	}
 }
 

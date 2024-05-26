@@ -2128,6 +2128,11 @@ figure.effect-goliath {
     position: absolute;
     text-align: center; }
 
+
+  .paginate-active{
+      background-color:magenta !important;
+  }
+
 .media .b-2-primary {
   border: 2px solid #448aff; }
 

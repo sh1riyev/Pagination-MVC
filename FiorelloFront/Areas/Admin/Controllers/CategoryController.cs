@@ -1,6 +1,9 @@
 ﻿using FiorelloFront.Data;
+using FiorelloFront.Helpers;
 using FiorelloFront.Models;
+using FiorelloFront.Services;
 using FiorelloFront.Services.Interface;
+using FiorelloFront.ViewModels;
 using FiorelloFront.ViewModels.Categories;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,9 +21,24 @@ namespace FiorelloFront.Areas.Admin.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int page=1)
         {
-            return View(await _categoryService.GetAllWithProductCountAsync());
+            var categories = await _categoryService.GetPaginateData(page, 4);
+
+            var mappedDatas = _categoryService.GetMapData(categories);
+
+            int totalPage = await GetPageCount(4);
+
+            Paginate<CategoryProductVM> paginateDatas = new(mappedDatas, totalPage, page);
+
+            return View(paginateDatas);
+        }
+
+        private async Task<int> GetPageCount(int take)
+        {
+            int productCount = await _categoryService.GetCountAsync();
+
+            return (int)Math.Ceiling((decimal)productCount / take);
         }
 
         [HttpGet]

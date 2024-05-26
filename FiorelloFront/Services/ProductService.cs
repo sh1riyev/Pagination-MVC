@@ -30,6 +30,11 @@ namespace FiorelloFront.Services
             return await _context.Products.FindAsync(id);
         }
 
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Products.CountAsync();
+        }
+
         public IEnumerable<ProductVM> GetMapData(IEnumerable<Product> products)
         {
             return products.Select(m => new ProductVM
@@ -39,8 +44,13 @@ namespace FiorelloFront.Services
                 CategoryName = m.Category.Name,
                 Price = m.Price,
                 Description = m.Description,
-                MainImage = m.ProductImages.FirstOrDefault(m => m.IsMain).Name
+                MainImage = m.ProductImages?.FirstOrDefault(m => m.IsMain)?.Name
             });
+        }
+
+        public async Task<IEnumerable<Product>> GetPaginateData(int take,int page)
+        {
+            return await _context.Products.Include(m => m.Category).Include(m => m.ProductImages).Skip((page-1)*take).Take(take).ToListAsync();
         }
     }
 }

@@ -73,6 +73,27 @@ namespace FiorelloFront.Services
                 CreatedDate = m.CreateDate.ToString("MM,dd,yyyy")
             });
         }
+
+        public async Task<IEnumerable<Category>> GetPaginateData(int take, int page)
+        {
+            return await _context.Categories.Include(m => m.Products).Skip((page - 1) * take).Take(take).ToListAsync();
+        }
+
+        public IEnumerable<CategoryProductVM> GetMapData(IEnumerable<Category> categories)
+        {
+            return categories.Select(m => new CategoryProductVM
+            {
+                Id = m.Id,
+                CategoryName = m.Name,
+                CreateDate = m.CreateDate.ToString("mm,dd,yyyy"),
+                ProductCount = m.Products.Count()
+            });
+        }
+
+        public async Task<int> GetCountAsync()
+        {
+            return await _context.Categories.CountAsync();
+        }
     }
 }
 
