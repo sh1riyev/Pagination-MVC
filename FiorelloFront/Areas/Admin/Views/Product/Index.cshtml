@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ProductVM>
+
+<div class="card">
+    <div class="card-header text-center">
+        <h1>Categories</h1>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <div class="create-operation">
+                    <a asp-action="Create" class="btn btn-success text-white btn-sm"><i class="ti-plus"></i></a>
+                </div>
+                <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="category-data">
+                            <td><img src="~/img/@item.MainImage" style="width:100px;height:100px" /></td>
+                            <td>@item.Name</td>
+                            <td>@item.Description</td>
+                            <td>@item.Price</td>
+                            <td>@item.CategoryName</td>
+                            <td>
+                                <a asp-action="Info" asp-route-id="@item.Id" class="btn btn-primary text-white btn-sm"><i class="ti-info"></i></a>
+                                <a class="btn btn-warning text-white btn-sm"><i class="ti-settings"></i></a>
+                                <form class="d-inline" method="post" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-danger text-white btn-sm"><i class="ti-trash"></i></button></form>
+                                <a class="btn btn-secondary text-white btn-sm add-archive" data-id="@item.Id"><i class="mdi mdi-archive"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            <div class="pagination d-flex justify-content-center mt-3">
+                <nav aria-label="...">
+                    <ul class="pagination">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+

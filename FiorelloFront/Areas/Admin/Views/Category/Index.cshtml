@@ -1,0 +1,44 @@
+﻿@model IEnumerable<CategoryProductVM>
+
+<div class="card">
+    <div class="card-header text-center">
+        <h1>Categories</h1>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <div class="create-operation">
+                    <a asp-action="Create" class="btn btn-success text-white btn-sm"><i class="ti-plus"></i></a>
+                </div>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Create Date</th>
+                        <th>Products Count</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="category-data">
+                            <td>@item.CategoryName</td>
+                            <td>@item.CreateDate</td>
+                            <td>@item.ProductCount</td>
+                            <td>
+                                <a asp-action="Info" asp-route-id="@item.Id" class="btn btn-primary text-white btn-sm"><i class="ti-info"></i></a>
+                                <a class="btn btn-warning text-white btn-sm"><i class="ti-settings"></i></a>
+                                <form class="d-inline" method="post" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-danger text-white btn-sm"><i class="ti-trash"></i></button></form>
+                                <a class="btn btn-secondary text-white btn-sm add-archive" data-id="@item.Id" ><i class="mdi mdi-archive"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section js{
+<script src="~/admin/assets/js/archive.js"></script>
+}

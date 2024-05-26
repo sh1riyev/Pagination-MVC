@@ -1,0 +1,60 @@
+﻿@model IEnumerable<CategoryArchiveVM>
+@{ViewData["Title"] = "Category Archive"; }
+
+<div class="card">
+    <div class="card-header text-center">
+        <h1>Categories Archive</h1>
+    </div>
+    <div class="card-block table-border-style">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Create Date</th>
+                        <th>Products Count</th>
+                        <th>Operation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr class="category-data">
+                            <td>@item.CategoryName</td>
+                            <td>@item.CreatedDate</td>
+                            <td>
+                                <form class="d-inline" method="post" asp-area="Admin" asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id"><button type="submit" class="btn btn-danger text-white btn-sm"><i class="ti-trash"></i></button></form>
+  <a class="btn btn-secondary text-white btn-sm restore"data-id="@item.Id" ><i class="mdi mdi-archive"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>s
+            </table>
+        </div>
+    </div>
+</div>
+
+@section js{
+    @*<script src="~/admin/assets/js/retore.js"></script>*@
+<script>
+    let categoryArchiveBtn = document.querySelectorAll(".restore");
+
+    categoryArchiveBtn.forEach(element => {
+        element.addEventListener("click", function () {
+            let id = parseInt(this.getAttribute("data-id"));
+
+            (async () => {
+                await fetch(`/Admin/Archive/Restore?id=${id}`, {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    },
+                });
+                this.closest(".category-data").remove();
+            })();
+        });
+    });
+</script>
+}
+
